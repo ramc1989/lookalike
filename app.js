@@ -28,9 +28,16 @@ if ('development' == app.get('env')) {
 //localhost:3000/getexample?param1=name&param2=age
 //app.get('/getexample', restservice.getcallbackfn);
 
-app.get('/', function(req,res){
+app.get('/getexample', function(req,res)
+{
+	// parsing the url to get the query parameters
+	// for eg. if we call localhost:3000/getexample?param1=name
+	//url_parts.query = {'param1':'name'}
+	var url_parts = url.parse(req.url, true); 
+	var query = url_parts.query;
+
 	//res send will send a plain text reponse to the user
-	res.send('Your GET Request Parameters are : ');
+	res.send('Your GET Request Parameters are : ' + JSON.stringify(query));
 });
 
 //exposing a post rest service
