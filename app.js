@@ -26,7 +26,12 @@ if ('development' == app.get('env')) {
 
 //exposing a get rest service
 //localhost:3000/getexample?param1=name&param2=age
-app.get('/getexample', restservice.getcallbackfn);
+//app.get('/getexample', restservice.getcallbackfn);
+
+app.get('/', function(req,res){
+	//res send will send a plain text reponse to the user
+	res.send('Your GET Request Parameters are : ');
+});
 
 //exposing a post rest service
 //localhost:3000/postexample
